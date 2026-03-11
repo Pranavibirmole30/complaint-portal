@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Login</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div style="max-width:450px;margin:120px auto;">
+
+<div class="glass" style="padding:40px;border-radius:24px;">
+
+<h2 style="text-align:center;margin-bottom:30px;">
+Admin <span style="color:#3b82f6;">Login</span>
+</h2>
+
+<form method="POST">
+
+<label>Email</label>
+<input type="email" name="email" placeholder="Admin Email">
+
+<label>Password</label>
+<input type="password" name="password" placeholder="Password">
+
+<br>
+
+<button class="btn-crazy">Authorize Access</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

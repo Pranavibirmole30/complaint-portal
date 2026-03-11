@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Submit Complaint</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div style="max-width:600px;margin:80px auto;">
+
+<div class="glass" style="padding:40px;border-radius:24px;">
+
+<h2 style="text-align:center;margin-bottom:30px;">
+Report an <span style="color:#3b82f6;">Issue</span>
+</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<label>Category</label>
+<select name="category">
+
+<option>Road</option>
+<option>Water</option>
+<option>Street Light</option>
+<option>Garbage</option>
+
+</select>
+
+<label>Description</label>
+<textarea name="description" placeholder="Describe the problem..." rows="4"></textarea>
+
+<label>Location</label>
+<input type="text" name="location" placeholder="Street, Area, City">
+
+<label>Evidence (Image)</label>
+<input type="file" name="image">
+
+<br>
+
+<button class="btn-crazy">Submit Report</button>
+
+</form>
+
+<div style="text-align:center;margin-top:20px;">
+
+<a href="/dashboard" class="nav-link">← Back to Dashboard</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

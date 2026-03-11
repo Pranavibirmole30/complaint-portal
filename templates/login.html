@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | VoiceOut</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6">
+
+    <nav class="p-6 flex justify-between max-w-7xl mx-auto">
+        <a href="/" class="font-black text-xl text-blue-500">VOICEOUT.</a>
+        <a href="/" class="text-gray-400 hover:text-white">← Back Home</a>
+    </nav>
+
+    <div class="glass max-w-md mx-auto mt-20 p-10">
+        <h3 class="text-2xl font-bold mb-6 text-center">Welcome Back</h3>
+        <form method="post">
+            <input name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button class="btn-crazy w-full">Sign In</button>
+        </form>
+        <div class="mt-6 text-center text-sm text-gray-400">
+            Don't have an account? <a href="/register" class="text-blue-500 hover:underline">Register here</a>
+        </div>
+    </div>
+
+</body>
+</html>

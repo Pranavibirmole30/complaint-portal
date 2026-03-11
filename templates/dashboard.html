@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div style="max-width:900px;margin:80px auto;text-align:center;">
+
+    <h1 style="margin-bottom:40px;">User <span style="color:#3b82f6;">Dashboard</span></h1>
+
+    <div class="glass" style="padding:40px;border-radius:20px;">
+
+        <h2 style="margin-bottom:30px;">What would you like to do?</h2>
+
+        <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+
+            <a href="/submit">
+                <button class="btn-crazy">Submit Complaint</button>
+            </a>
+
+            <a href="/view">
+                <button class="btn-crazy">View Complaints</button>
+            </a>
+
+            <a href="/logout">
+                <button class="btn-crazy" style="background:#ef4444;">Logout</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
