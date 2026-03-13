@@ -21,7 +21,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def get_db():
     db_path = os.path.join(BASE_DIR,"database.db")
-    return sqlite3.connect(db_path, check_same_thread=False)
+    conn = sqlite3.connect(db_path, check_same_thread=False)
+    conn.row_factory = sqlite3.Row
+    return conn
 
 # Create tables
 def init_db():
@@ -112,11 +114,15 @@ def submit():
         return redirect('/view')
     return render_template("submit.html")
 
+
 @app.route('/view')
 def view():
     db = get_db()
-    data = db.execute("SELECT * FROM complaints").fetchall()
-    return render_template("view.html", complaints=data)
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM complaints")
+    complaints = cursor.fetchall()
+
+    return render_template("view.html",complaints=complaints)
 
 @app.route('/logout')
 def logout():
