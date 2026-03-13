@@ -14,30 +14,44 @@ UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Database connection
+import os
+import sqlite3
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 def get_db():
-    return sqlite3.connect("database.db")
+    db_path = os.path.join(BASE_DIR,"database.db")
+    conn = sqlite3.connect(db_path, check_same_thread=False)
+    conn.row_factory = sqlite3.Row
+    return conn
 
 # Create tables
-with get_db() as db:
-    db.execute("""
-    CREATE TABLE IF NOT EXISTS users(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        email TEXT,
-        password TEXT
-    )
-    """)
-    db.execute("""
-    CREATE TABLE IF NOT EXISTS complaints(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        category TEXT,
-        description TEXT,
-        location TEXT,
-        status TEXT,
-        image TEXT
-    )
-    """)
+def init_db():
+    with get_db() as db:
 
+        db.execute("""
+        CREATE TABLE IF NOT EXISTS users(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            email TEXT,
+            password TEXT
+        )
+        """)
+
+        db.execute("""
+        CREATE TABLE IF NOT EXISTS complaints(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            category TEXT,
+            description TEXT,
+            location TEXT,
+            status TEXT,
+            image TEXT
+        )
+        """)
+
+        db.commit()
+
+init_db()
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -100,11 +114,15 @@ def submit():
         return redirect('/view')
     return render_template("submit.html")
 
+
 @app.route('/view')
 def view():
     db = get_db()
-    data = db.execute("SELECT * FROM complaints").fetchall()
-    return render_template("view.html", complaints=data)
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM complaints")
+    complaints = cursor.fetchall()
+
+    return render_template("view.html",complaints=complaints)
 
 @app.route('/logout')
 def logout():
