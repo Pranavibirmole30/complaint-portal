@@ -4,6 +4,10 @@
     --bg: #020617;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: radial-gradient(circle at top left, #0f172a, #020617);
     color: white;
@@ -31,6 +35,11 @@ body {
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .btn-crazy:hover {
@@ -43,6 +52,8 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: 0.3s;
+    padding: 8px 12px;
+    display: inline-block;
 }
 
 .nav-link:hover {
@@ -58,40 +69,79 @@ input, textarea, select {
     padding: 12px !important;
     margin-bottom: 20px;
     width: 100%;
+    min-height: 44px;
 }
-select option{
-    background:#111827;
-    color:white;
+
+select option {
+    background: #111827;
+    color: white;
 }
+
 /* Register / Login Form Box */
-
-.form-box{
-    width:400px;
-    margin:80px auto;
-    padding:40px;
-    border-radius:20px;
+.form-box {
+    width: 100%;
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 32px;
+    border-radius: 20px;
 }
 
-.form-box h2{
-    text-align:center;
-    margin-bottom:25px;
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
 }
 
-.form-box button{
-    width:100%;
-}
-.logout-btn{
-background:linear-gradient(135deg,#ef44d2,#dc26c4);
-color:white;
-padding:10px 20px;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-box-shadow:0 4px 15px rgba(239,68,68,0.4);
+.form-box button {
+    width: 100%;
 }
 
-.logout-btn:hover{
-transform:scale(1.05);
-box-shadow:0 6px 20px rgba(239,68,68,0.6);
+.form-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.logout-btn {
+    background: linear-gradient(135deg, #ef44d2, #dc26c4);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.logout-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+}
+
+/* Touch-friendly adjustments */
+@media (max-width: 768px) {
+    .btn-crazy {
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+    
+    input, textarea, select {
+        padding: 14px !important;
+        font-size: 16px;
+    }
+    
+    .logout-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-box {
+        margin: 40px 16px;
+        padding: 24px;
+    }
 }

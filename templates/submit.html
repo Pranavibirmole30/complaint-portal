@@ -1,53 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Submit Complaint</title>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Complaint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="p-4 md:p-6">
 
-<div style="max-width:600px;margin:80px auto;">
+<div class="max-w-lg md:max-w-xl mx-auto mt-12 md:mt-20">
 
-<div class="glass" style="padding:40px;border-radius:24px;">
+<div class="glass p-6 md:p-10 rounded-2xl">
 
-<h2 style="text-align:center;margin-bottom:30px;">
-Report an <span style="color:#3b82f6;">Issue</span>
+<h2 class="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8">
+Report an <span class="text-blue-500;">Issue</span>
 </h2>
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" class="space-y-4">
 
-<label>Category</label>
-<select name="category">
+<div>
+    <label class="block text-sm font-medium mb-2">Category</label>
+    <select name="category" class="w-full">
 
-<option>Road</option>
-<option>Water</option>
-<option>Street Light</option>
-<option>Garbage</option>
+    <option>Road</option>
+    <option>Water</option>
+    <option>Street Light</option>
+    <option>Garbage</option>
 
-</select>
+    </select>
+</div>
 
-<label>Description</label>
-<textarea name="description" placeholder="Describe the problem..." rows="4"></textarea>
+<div>
+    <label class="block text-sm font-medium mb-2">Description</label>
+    <textarea name="description" placeholder="Describe the problem..." rows="4" class="w-full"></textarea>
+</div>
 
-<label>Location</label>
-<input type="text" name="location" placeholder="Street, Area, City">
+<div>
+    <label class="block text-sm font-medium mb-2">Location</label>
+    <input type="text" name="location" placeholder="Street, Area, City" class="w-full">
+</div>
 
-<label>Evidence (Image)</label>
-<input type="file" name="image">
+<div>
+    <label class="block text-sm font-medium mb-2">Evidence (Image)</label>
+    <input type="file" name="image" class="w-full">
+</div>
 
-<br>
-
-<button class="btn-crazy">Submit Report</button>
+<button class="btn-crazy w-full mt-4">Submit Report</button>
 
 </form>
 
-<div style="text-align:center;margin-top:20px;">
-
-<a href="/dashboard" class="nav-link">← Back to Dashboard</a>
-
+<div class="text-center mt-5">
+    <a href="/dashboard" class="nav-link">← Back to Dashboard</a>
 </div>
 
 </div>
