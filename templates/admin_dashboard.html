@@ -14,7 +14,7 @@
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;">
 <h1>Admin <span style="color:#3b82f6;">Console</span></h1>
 
-<a href="/logout" class="nav-link">Logout</a>
+<a href="/logout" class="logout-btn">Logout</a>
 </div>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:25px;">
@@ -44,6 +44,13 @@
 </select>
 
 <button class="btn-crazy" style="margin-top:10px;">Update Status</button>
+<button class="btn-crazy" style="background:#ef4444;margin-top:10px;"
+formaction="/delete_complaint/{{ c[0] }}"
+onclick="return confirm('Delete this complaint?')">
+
+Delete
+
+</button>
 
 </form>
 

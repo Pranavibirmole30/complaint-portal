@@ -80,3 +80,18 @@ select option{
 .form-box button{
     width:100%;
 }
+.logout-btn{
+background:linear-gradient(135deg,#ef44d2,#dc26c4);
+color:white;
+padding:10px 20px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+box-shadow:0 4px 15px rgba(239,68,68,0.4);
+}
+
+.logout-btn:hover{
+transform:scale(1.05);
+box-shadow:0 6px 20px rgba(239,68,68,0.6);
+}

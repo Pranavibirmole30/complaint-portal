@@ -155,6 +155,18 @@ def update_status(id):
     db.execute("UPDATE complaints SET status=? WHERE id=?", (new_status, id))
     db.commit()
     return redirect('/admin_dashboard')
+@app.route('/delete_complaint/<int:id>', methods=['POST'])
+def delete_complaint(id):
+
+    if 'admin' not in session:
+        return redirect('/admin')
+
+    db = get_db()
+
+    db.execute("DELETE FROM complaints WHERE id=?", (id,))
+    db.commit()
+
+    return redirect('/admin_dashboard')
 
 # --- END OF ADMIN LOGIC ---
 
