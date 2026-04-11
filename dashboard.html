@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+<div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:40px 40px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+">
+
+    <div style="font-size:24px; font-weight:bold; color:#4da6ff;">
+        Civic Connect.
+    </div>
+
+    <div style="display:flex; align-items:center; gap:15px;">
+
+        <span style="color:white;">
+            👤 {{ session['user'] }}
+        </span>
+    </div>
+    <button onclick="toggleTheme()" id="themeBtn" style="
+    background:#1f2937;
+    border:none;
+    padding:8px 12px;
+    border-radius:20px;
+    color:white;
+    cursor:pointer;
+">
+    🌙
+</button>
+</div>
+    
+<div style="max-width:900px;margin:80px auto;text-align:center;">
+
+    <h1 style="margin-bottom:40px;">Welcome, {{ session['user'] }}!</span></h1>
+
+    <div class="glass" style="padding:40px;border-radius:20px;">
+
+        <h2 style="margin-bottom:30px;">What would you like to do?</h2>
+
+        <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+
+            <a href="/submit">
+                <button class="btn-crazy">Submit Complaint</button>
+            </a>
+
+            <a href="/view">
+                <button class="btn-crazy">View Complaints</button>
+            </a>
+
+            <a href="/logout">
+                <button class="btn-crazy" style="background:#ef4444;">Logout</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+        document.getElementById("themeBtn").innerText = "☀️";
+    } else {
+        localStorage.setItem("theme", "dark");
+        document.getElementById("themeBtn").innerText = "🌙";
+    }
+}
+
+// Load saved theme
+window.onload = function () {
+    let savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+        document.getElementById("themeBtn").innerText = "☀️";
+    }
+};
+</script>
+</body>
+</html>
