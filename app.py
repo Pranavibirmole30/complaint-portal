@@ -85,7 +85,7 @@ def login():
                           (email,password)).fetchone()
 
         if user:
-            session['user'] = email
+            session['user'] = user['name']
             return redirect('/dashboard')
     return render_template("login.html")
 
@@ -187,9 +187,6 @@ def delete_complaint(id):
     return redirect('/admin_dashboard')
 
 # --- END OF ADMIN LOGIC ---
-
-#if __name__ == "__main__":
-    app.run(debug=True)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
